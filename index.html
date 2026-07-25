@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Member directory for Group 4 - Grade 11, Immaculate Conception Polytechnic, San Jose Del Monte, Bulacan.">
+<meta name="color-scheme" content="light dark">
+<title>Group 4 · Member Directory</title>
+<style>
+  /* ---- reset: the artifact host supplied one, a standalone page needs its own ---- */
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { min-height: 100vh; }
+  img, svg, video, canvas { display: block; max-width: 100%; }
+  input, button, textarea, select { font: inherit; }
+  h1, h2, h3, h4, p, li { overflow-wrap: break-word; }
+  ul, ol { list-style: none; padding: 0; }
+  table { border-collapse: collapse; }
+</style>
+</head>
+
+<body>
+
+<style>
+  /* ---- tokens: light ---------------------------------------------- */
+  :root {
+    --paper:      #F0F3EF;
+    --surface:    #FFFFFF;
+    --surface-2:  #E7EBE5;
+    --ink:        #14312B;
+    --slate:      #4C5F59;
+    --slate-soft: #7B8B85;
+    --rule:       #C9D2CB;
+    --rule-soft:  #DDE3DC;
+    --ochre:      #A8681A;
+    --seal:       #0D6A57;
+    --seal-wash:  #E2EDE8;
+
+    --display: "Iowan Old Style", "Palatino Linotype", Palatino, Cambria, Georgia, serif;
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", "Consolas", "SF Mono", Menlo, monospace;
+
+    --step--1: clamp(0.75rem, 0.73rem + 0.1vw, 0.8rem);
+    --step-0:  clamp(0.95rem, 0.92rem + 0.15vw, 1.03rem);
+    --step-1:  clamp(1.1rem, 1.05rem + 0.25vw, 1.25rem);
+    --step-2:  clamp(1.35rem, 1.25rem + 0.5vw, 1.7rem);
+    --step-3:  clamp(1.8rem, 1.5rem + 1.4vw, 2.9rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:      #0E1513;
+      --surface:    #161F1C;
+      --surface-2:  #1E2A26;
+      --ink:        #E6ECE7;
+      --slate:      #A9B8B2;
+      --slate-soft: #7B8B85;
+      --rule:       #2C3A35;
+      --rule-soft:  #222E2A;
+      --ochre:      #DFA152;
+      --seal:       #58BCA2;
+      --seal-wash:  #1B2B27;
+    }
+  }
+
+  /* viewer's explicit toggle must win in both directions */
+  :root[data-theme="dark"] {
+    --paper:      #0E1513;
+    --surface:    #161F1C;
+    --surface-2:  #1E2A26;
+    --ink:        #E6ECE7;
+    --slate:      #A9B8B2;
+    --slate-soft: #7B8B85;
+    --rule:       #2C3A35;
+    --rule-soft:  #222E2A;
+    --ochre:      #DFA152;
+    --seal:       #58BCA2;
+    --seal-wash:  #1B2B27;
+  }
+  :root[data-theme="light"] {
+    --paper:      #F0F3EF;
+    --surface:    #FFFFFF;
+    --surface-2:  #E7EBE5;
+    --ink:        #14312B;
+    --slate:      #4C5F59;
+    --slate-soft: #7B8B85;
+    --rule:       #C9D2CB;
+    --rule-soft:  #DDE3DC;
+    --ochre:      #A8681A;
+    --seal:       #0D6A57;
+    --seal-wash:  #E2EDE8;
+  }
+
+  /* ---- base ------------------------------------------------------- */
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: var(--step-0);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 1rem + 3vw, 4rem) clamp(1rem, 0.6rem + 2.5vw, 3rem) 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.25rem, 1.5rem + 2.5vw, 3.75rem);
+  }
+
+  a { color: var(--ochre); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { color: var(--ink); }
+
+  :focus-visible {
+    outline: 2px solid var(--ochre);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate-soft);
+  }
+
+  /* ---- masthead --------------------------------------------------- */
+  .masthead { display: flex; flex-direction: column; gap: 1rem; }
+
+  .masthead-rule {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .masthead h1 {
+    font-family: var(--display);
+    font-size: var(--step-3);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin-top: 0.5rem;
+  }
+
+  .masthead h1 em {
+    font-style: italic;
+    color: var(--seal);
+  }
+
+  .lede {
+    max-width: 62ch;
+    color: var(--slate);
+    font-size: var(--step-1);
+    line-height: 1.6;
+  }
+
+  /* ---- filter ----------------------------------------------------- */
+  .finder {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+  }
+
+  .finder label {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-soft);
+  }
+
+  .finder input {
+    flex: 1 1 16rem;
+    min-width: 0;
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 0.55rem 0.8rem;
+  }
+  .finder input::placeholder { color: var(--slate-soft); }
+  .finder input:focus { border-color: var(--seal); }
+
+  .tally {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    font-variant-numeric: tabular-nums;
+    color: var(--slate);
+  }
+
+  /* ---- roster table ---------------------------------------------- */
+  .table-wrap {
+    overflow-x: auto;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  table.roster {
+    width: 100%;
+    min-width: 46rem;
+    border-collapse: collapse;
+    font-size: var(--step-0);
+  }
+
+  table.roster caption {
+    caption-side: top;
+    text-align: left;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-soft);
+    padding-bottom: 0.7rem;
+  }
+
+  table.roster th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+
+  table.roster td {
+    padding: 0.85rem 0.9rem;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: middle;
+    color: var(--slate);
+  }
+
+  table.roster tbody tr:last-child td { border-bottom: 0; }
+  table.roster tbody tr:hover { background: var(--surface-2); }
+
+  .col-num {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--slate-soft);
+    width: 2.5rem;
+  }
+
+  .col-age {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .who { display: flex; align-items: center; gap: 0.8rem; }
+
+  .who img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
+    background: var(--surface-2);
+  }
+
+  .who a {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  .who a:hover { color: var(--ochre); border-bottom-color: var(--ochre); }
+
+  .col-skills { min-width: 14rem; }
+
+  .jump {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .jump:hover { text-decoration: underline; }
+
+  .empty {
+    padding: 1.5rem 0.9rem;
+    color: var(--slate-soft);
+    font-style: italic;
+  }
+  .empty[hidden] { display: none; }
+
+  /* ---- profiles --------------------------------------------------- */
+  .profiles { display: flex; flex-direction: column; gap: 2.5rem; }
+
+  .profiles > h2 {
+    font-family: var(--display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .card {
+    scroll-margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .card:last-of-type { border-bottom: 0; padding-bottom: 0; }
+
+  @media (max-width: 44rem) {
+    .card { grid-template-columns: minmax(0, 1fr); }
+    .portrait { max-width: 190px; }
+  }
+
+  .portrait figure { display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .portrait img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 3px;
+    background: var(--surface-2);
+  }
+
+  .portrait figcaption {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    font-variant-numeric: tabular-nums;
+    color: var(--slate-soft);
+    letter-spacing: 0.06em;
+  }
+
+  .detail { display: flex; flex-direction: column; gap: 1.15rem; }
+
+  .detail h3 {
+    font-family: var(--display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    color: var(--slate);
+    max-width: 60ch;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 0.45rem; }
+
+  .field > .eyebrow { display: block; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; }
+
+  .chips li {
+    font-size: var(--step--1);
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    background: var(--seal-wash);
+    color: var(--seal);
+    border: 1px solid transparent;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .chips li { border-color: var(--rule); }
+  }
+  :root[data-theme="dark"] .chips li { border-color: var(--rule); }
+  :root[data-theme="light"] .chips li { border-color: transparent; }
+
+  ol.timeline {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    counter-reset: step;
+  }
+
+  ol.timeline li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 1.6rem minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+
+  ol.timeline li::before {
+    content: counter(step);
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    font-variant-numeric: tabular-nums;
+    color: var(--slate-soft);
+    padding-top: 0.15rem;
+  }
+
+  ol.timeline b { font-weight: 600; color: var(--ink); }
+
+  ol.timeline .meta {
+    display: block;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--slate-soft);
+    line-height: 1.5;
+  }
+
+  .current b { color: var(--seal); }
+
+  .backtop {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    text-decoration: none;
+    align-self: start;
+  }
+  .backtop:hover { text-decoration: underline; }
+
+  /* ---- footer ----------------------------------------------------- */
+  .colophon {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--ink);
+    color: var(--slate);
+    font-size: var(--step--1);
+    line-height: 1.7;
+  }
+
+  .colophon p { max-width: 68ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead" id="top">
+    <div class="masthead-rule">
+      <span class="eyebrow">Immaculate Conception Polytechnic &middot; SJDM, Bulacan</span>
+      <span class="eyebrow">Grade 11 &middot; A.Y. 2026&ndash;2027</span>
+    </div>
+    <h1>Group 4 &mdash; <em>seven members,</em> one roster.</h1>
+    <p class="lede">
+      This directory collects the member profiles our group built for our webpage project.
+      Every member is listed in the roster below; the full write-ups follow underneath.
+      Use the finder to jump to a name, a school, or a skill.
+    </p>
+  </header>
+
+  <section class="finder-section">
+    <div class="finder">
+      <label for="q">Find a member</label>
+      <input id="q" type="search" placeholder="Try a name, a school, or a skill&hellip;" autocomplete="off">
+      <span class="tally" id="tally">7 of 7 shown</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="table-wrap">
+      <table class="roster">
+        <caption>Roster &mdash; Group 4 members</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Member</th>
+            <th scope="col">Age</th>
+            <th scope="col">School before ICP</th>
+            <th scope="col">Skills</th>
+            <th scope="col"><span class="sr-only">Profile</span></th>
+          </tr>
+        </thead>
+        <tbody id="rows">
+          <tr data-find="ebdani althea nash marangal national high school cades editing taekwondo makeup">
+            <td class="col-num">1</td>
+            <td>
+              <span class="who">
+                <img src="img/ebdani.jpg" alt="Althea Nash B. Ebdani">
+                <a href="#ebdani">Ebdani, Althea Nash B.</a>
+              </span>
+            </td>
+            <td class="col-age">16</td>
+            <td>Marangal National High School</td>
+            <td class="col-skills">Editing &middot; Taekwondo &middot; Makeup</td>
+            <td><a class="jump" href="#ebdani">Profile &darr;</a></td>
+          </tr>
+          <tr data-find="candaswa nash james la concepcion college kaypian multi-instrumentalist drummer perfect pitch coding basketball">
+            <td class="col-num">2</td>
+            <td>
+              <span class="who">
+                <img src="img/candaswa.jpg" alt="Nash James L. Candaswa">
+                <a href="#candaswa">Candaswa, Nash James L.</a>
+              </span>
+            </td>
+            <td class="col-age">15</td>
+            <td>La Concepcion College</td>
+            <td class="col-skills">Multi-instrumentalist &middot; Drummer &middot; Perfect pitch &middot; Coding</td>
+            <td><a class="jump" href="#candaswa">Profile &darr;</a></td>
+          </tr>
+          <tr data-find="calderon johan miles muzon high school abc christian academy benito nieto sprinting swimming gaming mobile legends wild rift honor of kings">
+            <td class="col-num">3</td>
+            <td>
+              <span class="who">
+                <img src="img/calderon.jpg" alt="Johan Miles D. Calderon">
+                <a href="#calderon">Calderon, Johan Miles D.</a>
+              </span>
+            </td>
+            <td class="col-age">15</td>
+            <td>Muzon High School</td>
+            <td class="col-skills">Sprinting &middot; Swimming &middot; Multi-game play</td>
+            <td><a class="jump" href="#calderon">Profile &darr;</a></td>
+          </tr>
+          <tr data-find="mateo klawrence angelito sarmiento high school vine emmanuel basketball badminton dancing">
+            <td class="col-num">4</td>
+            <td>
+              <span class="who">
+                <img src="img/mateo.jpg" alt="Klawrence Mateo">
+                <a href="#mateo">Mateo, Klawrence</a>
+              </span>
+            </td>
+            <td class="col-age">17</td>
+            <td>Angelito M. Sarmiento High School</td>
+            <td class="col-skills">Basketball &middot; Badminton &middot; Dancing</td>
+            <td><a class="jump" href="#mateo">Profile &darr;</a></td>
+          </tr>
+          <tr data-find="mararac janna faith marangal national high school galmi christian academy antipolo badminton cooking online games">
+            <td class="col-num">5</td>
+            <td>
+              <span class="who">
+                <img src="img/mararac.jpg" alt="Janna Faith D. Mararac">
+                <a href="#mararac">Mararac, Janna Faith D.</a>
+              </span>
+            </td>
+            <td class="col-age">15</td>
+            <td>Marangal National High School</td>
+            <td class="col-skills">Badminton &middot; Cooking &middot; Online games</td>
+            <td><a class="jump" href="#mararac">Profile &darr;</a></td>
+          </tr>
+          <tr data-find="santos xyrus edward marangal national high school elementary annex cooking driving playing games">
+            <td class="col-num">6</td>
+            <td>
+              <span class="who">
+                <img src="img/santos.jpg" alt="Xyrus Edward M. Santos">
+                <a href="#santos">Santos, Xyrus Edward M.</a>
+              </span>
+            </td>
+            <td class="col-age">16</td>
+            <td>Marangal National High School</td>
+            <td class="col-skills">Cooking &middot; Driving &middot; Gaming</td>
+            <td><a class="jump" href="#santos">Profile &darr;</a></td>
+          </tr>
+          <tr data-find="carandag carandang cassie san jose del monte national high school muzon pabahay munoz laboratory sprinting swimming online games mlbb ict">
+            <td class="col-num">7</td>
+            <td>
+              <span class="who">
+                <img src="img/carandag.jpg" alt="Cassie D. Carandag">
+                <a href="#carandag">Carandag, Cassie D.</a>
+              </span>
+            </td>
+            <td class="col-age">16</td>
+            <td>San Jose del Monte National High School</td>
+            <td class="col-skills">Sprinting &middot; Swimming &middot; Online games</td>
+            <td><a class="jump" href="#carandag">Profile &darr;</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="empty" id="empty" hidden>No member matches that search.</p>
+    </div>
+  </section>
+
+  <section class="profiles">
+    <h2>Member profiles</h2>
+
+    <!-- 1 -->
+    <article class="card" id="ebdani">
+      <div class="portrait">
+        <figure>
+          <img src="img/ebdani.jpg" alt="Portrait of Althea Nash B. Ebdani">
+          <figcaption>01 &middot; Age 16 &middot; SJDM, Bulacan</figcaption>
+        </figure>
+      </div>
+      <div class="detail">
+        <h3>Althea Nash B. Ebdani</h3>
+        <p class="standfirst">
+          Hi! I am Althea Nash B. Ebdani, a Grade 11 student from Immaculate Conception
+          Polytechnic. I love looking at nature and watching beautiful sunsets.
+        </p>
+        <div class="field">
+          <span class="eyebrow">Skills</span>
+          <ul class="chips"><li>Editing</li><li>Taekwondo</li><li>Makeup</li></ul>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Educational background</span>
+          <ol class="timeline">
+            <li><span><b>CADES</b></span></li>
+            <li><span><b>Marangal National High School</b></span></li>
+            <li class="current"><span><b>Immaculate Conception Polytechnic</b>
+              <span class="meta">EB Town Center, 3rd Floor, Grotto, SJDM &middot; 2026&ndash;present</span></span></li>
+          </ol>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Elsewhere</span>
+          <span><a href="https://www.facebook.com/althea.ebdani.2024" target="_blank" rel="noopener noreferrer">Facebook profile</a></span>
+        </div>
+        <a class="backtop" href="#top">&uarr; Back to roster</a>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="card" id="candaswa">
+      <div class="portrait">
+        <figure>
+          <img src="img/candaswa.jpg" alt="Portrait of Nash James L. Candaswa">
+          <figcaption>02 &middot; Age 15 &middot; SJDM, Bulacan</figcaption>
+        </figure>
+      </div>
+      <div class="detail">
+        <h3>Nash James L. Candaswa</h3>
+        <p class="standfirst">
+          I am a Grade 11 student from ICP, and I really love studying, coding, playing
+          basketball, and loving God. My height is 5&prime;6&Prime;. For your information, I am a
+          picky eater &mdash; but only when it comes to vegetables. Hehe.
+        </p>
+        <div class="field">
+          <span class="eyebrow">Skills</span>
+          <ul class="chips"><li>Multi-instrumentalist</li><li>Drummer</li><li>Perfect pitch</li><li>Coding</li></ul>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Educational background</span>
+          <ol class="timeline">
+            <li><span><b>La Concepcion College</b>
+              <span class="meta">Kaypian Campus, San Jose Del Monte, Bulacan &middot; 2019&ndash;2026</span></span></li>
+            <li class="current"><span><b>Immaculate Conception Polytechnic</b>
+              <span class="meta">EB Town Mall, 3rd Floor, SJDM &middot; 2026&ndash;2027</span></span></li>
+          </ol>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Elsewhere</span>
+          <span><a href="https://www.facebook.com/share/1RCga3kLD8/" target="_blank" rel="noopener noreferrer">Facebook profile</a></span>
+        </div>
+        <a class="backtop" href="#top">&uarr; Back to roster</a>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="card" id="calderon">
+      <div class="portrait">
+        <figure>
+          <img src="img/calderon.jpg" alt="Portrait of Johan Miles D. Calderon">
+          <figcaption>03 &middot; Age 15 &middot; SJDM, Bulacan</figcaption>
+        </figure>
+      </div>
+      <div class="detail">
+        <h3>Johan Miles D. Calderon</h3>
+        <p class="standfirst">
+          I am Johan Miles Calderon, a 15-year-old Grade 11 student. My dream is to become
+          an IT professional in a company. My favorite food is chicken, and I enjoy playing
+          games such as Mobile Legends: Bang Bang, League of Legends: Wild Rift, and Honor of Kings.
+        </p>
+        <div class="field">
+          <span class="eyebrow">Skills</span>
+          <ul class="chips"><li>Sprinting fast</li><li>Swimming (up to 7 feet)</li><li>Playing two games at once</li></ul>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Favorite games</span>
+          <ul class="chips"><li>Mobile Legends: Bang Bang</li><li>LoL: Wild Rift</li><li>Honor of Kings</li></ul>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Educational background</span>
+          <ol class="timeline">
+            <li><span><b>ABC Christian Academy</b></span></li>
+            <li><span><b>Benito Nieto Elementary School</b></span></li>
+            <li><span><b>Muzon High School</b></span></li>
+            <li class="current"><span><b>Immaculate Conception Polytechnic</b>
+              <span class="meta">EB Town Center, 3rd Floor, Grotto, SJDM &middot; 2026&ndash;present</span></span></li>
+          </ol>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Elsewhere</span>
+          <span><a href="https://www.facebook.com/calderon.johan.miles/" target="_blank" rel="noopener noreferrer">Facebook profile</a></span>
+        </div>
+        <a class="backtop" href="#top">&uarr; Back to roster</a>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="card" id="mateo">
+      <div class="portrait">
+        <figure>
+          <img src="img/mateo.jpg" alt="Portrait of Klawrence Mateo">
+          <figcaption>04 &middot; Age 17 &middot; SJDM, Bulacan</figcaption>
+        </figure>
+      </div>
+      <div class="detail">
+        <h3>Klawrence Mateo</h3>
+        <p class="standfirst">
+          I&rsquo;m a helpful person, and I love playing basketball.
+        </p>
+        <div class="field">
+          <span class="eyebrow">Skills</span>
+          <ul class="chips"><li>Basketball</li><li>Badminton</li><li>Dancing</li></ul>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Educational background</span>
+          <ol class="timeline">
+            <li><span><b>Vine Emmanuel School</b></span></li>
+            <li><span><b>Angelito M. Sarmiento High School</b></span></li>
+            <li class="current"><span><b>Immaculate Conception Polytechnic</b>
+              <span class="meta">EB Town Center, 3rd Floor, Grotto, SJDM &middot; 2026&ndash;present</span></span></li>
+          </ol>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Elsewhere</span>
+          <span><a href="https://www.facebook.com/profile.php?id=61580385306659" target="_blank" rel="noopener noreferrer">Facebook profile</a></span>
+        </div>
+        <a class="backtop" href="#top">&uarr; Back to roster</a>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="card" id="mararac">
+      <div class="portrait">
+        <figure>
+          <img src="img/mararac.jpg" alt="Portrait of Janna Faith D. Mararac">
+          <figcaption>05 &middot; Age 15 &middot; SJDM, Bulacan</figcaption>
+        </figure>
+      </div>
+      <div class="detail">
+        <h3>Janna Faith D. Mararac</h3>
+        <p class="standfirst">
+          Hi! I am Janna Faith Mararac, a Grade 11 student from Immaculate Conception
+          Polytechnic. My previous school was Marangal National High School. I enjoy
+          participating in different school events, playing badminton, cooking, and
+          playing online games.
+        </p>
+        <div class="field">
+          <span class="eyebrow">Skills</span>
+          <ul class="chips"><li>Badminton</li><li>Cooking</li><li>Online games</li></ul>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Educational background</span>
+          <ol class="timeline">
+            <li><span><b>Galmi Christian Academy</b></span></li>
+            <li><span><b>Antipolo Elementary School</b></span></li>
+            <li><span><b>Antipolo National High School</b></span></li>
+            <li><span><b>Marangal National High School</b></span></li>
+            <li class="current"><span><b>Immaculate Conception Polytechnic</b>
+              <span class="meta">EB Town Center, 3rd Floor, Grotto, SJDM &middot; 2026&ndash;present</span></span></li>
+          </ol>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Elsewhere</span>
+          <span><a href="https://www.facebook.com/janna.fthz" target="_blank" rel="noopener noreferrer">Facebook profile</a></span>
+        </div>
+        <a class="backtop" href="#top">&uarr; Back to roster</a>
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="card" id="santos">
+      <div class="portrait">
+        <figure>
+          <img src="img/santos.jpg" alt="Portrait of Xyrus Edward M. Santos">
+          <figcaption>06 &middot; Age 16 &middot; SJDM, Bulacan</figcaption>
+        </figure>
+      </div>
+      <div class="detail">
+        <h3>Xyrus Edward M. Santos</h3>
+        <p class="standfirst">
+          Hello! I am Xyrus Edward M. Santos, a 16-year-old Grade 11 student. I enjoy
+          learning new things, cooking, driving, and playing games. I always strive to
+          improve my skills and become a better person every day. Pinaka mabait na student
+          sa ICP &mdash; maaasahan n&rsquo;yo at solid na tropa!
+        </p>
+        <div class="field">
+          <span class="eyebrow">Skills</span>
+          <ul class="chips"><li>Cooking</li><li>Driving</li><li>Playing games</li></ul>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Educational background</span>
+          <ol class="timeline">
+            <li><span><b>Marangal Elementary School Annex</b></span></li>
+            <li><span><b>Marangal National High School</b></span></li>
+            <li class="current"><span><b>Immaculate Conception Polytechnic</b>
+              <span class="meta">EB Town Center, 3rd Floor, Grotto, SJDM &middot; 2026&ndash;present</span></span></li>
+          </ol>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Elsewhere</span>
+          <span><a href="https://www.facebook.com/xyrus.walanglumalambing" target="_blank" rel="noopener noreferrer">Facebook profile</a></span>
+        </div>
+        <a class="backtop" href="#top">&uarr; Back to roster</a>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="card" id="carandag">
+      <div class="portrait">
+        <figure>
+          <img src="img/carandag.jpg" alt="Portrait of Cassie D. Carandag">
+          <figcaption>07 &middot; Age 16 &middot; SJDM, Bulacan</figcaption>
+        </figure>
+      </div>
+      <div class="detail">
+        <h3>Cassie D. Carandag</h3>
+        <p class="standfirst">
+          Hello! I&rsquo;m Cassie, a Grade 11 ICT student from San Jose del Monte. I enjoy
+          playing online games and spending time with my friends.
+        </p>
+        <div class="field">
+          <span class="eyebrow">Skills</span>
+          <ul class="chips"><li>Sprinting fast</li><li>Swimming (up to 6 feet underwater)</li><li>Online games (mostly MLBB)</li></ul>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Educational background</span>
+          <ol class="timeline">
+            <li><span><b>Muzon Pabahay Elementary School</b></span></li>
+            <li><span><b>Mu&ntilde;oz Laboratory Elementary School</b></span></li>
+            <li><span><b>San Jose del Monte National High School</b></span></li>
+            <li class="current"><span><b>Immaculate Conception Polytechnic</b>
+              <span class="meta">EB Town Center, 3rd Floor, Grotto, SJDM &middot; 2026&ndash;present</span></span></li>
+          </ol>
+        </div>
+        <div class="field">
+          <span class="eyebrow">Elsewhere</span>
+          <span><a href="https://www.facebook.com/cassie.carandang.9" target="_blank" rel="noopener noreferrer">Facebook profile</a></span>
+        </div>
+        <a class="backtop" href="#top">&uarr; Back to roster</a>
+      </div>
+    </article>
+  </section>
+
+  <footer class="colophon">
+    <span class="eyebrow">About this page</span>
+    <p>
+      Group 4 &mdash; Grade 11, Immaculate Conception Polytechnic, San Jose Del Monte, Bulacan.
+      Built by the group as a webpage project and published as a single shareable directory.
+    </p>
+    <p>
+      Because this page is on the public web and most members are minors, personal contact
+      numbers, email addresses, complete home addresses, and birthdates are deliberately left
+      out. Those details stay in the group&rsquo;s classroom copy of the project.
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var q = document.getElementById('q');
+    var tally = document.getElementById('tally');
+    var empty = document.getElementById('empty');
+    var rows = Array.prototype.slice.call(document.querySelectorAll('#rows tr'));
+    var total = rows.length;
+
+    function apply() {
+      var term = q.value.trim().toLowerCase();
+      var shown = 0;
+
+      rows.forEach(function (row) {
+        var hit = term === '' || row.getAttribute('data-find').indexOf(term) !== -1;
+        row.hidden = !hit;
+        if (hit) { shown++; }
+      });
+
+      // renumber the visible rows so the roster always reads 1..n
+      var n = 0;
+      rows.forEach(function (row) {
+        if (!row.hidden) {
+          n++;
+          row.querySelector('.col-num').textContent = n;
+        }
+      });
+
+      empty.hidden = shown !== 0;
+      tally.textContent = shown === total
+        ? total + ' of ' + total + ' shown'
+        : shown + ' of ' + total + ' shown';
+    }
+
+    q.addEventListener('input', apply);
+    apply();
+  })();
+</script>
+
+</body>
+
+</html>

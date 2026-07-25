@@ -1,0 +1,20 @@
+# OS / editor cruft
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# Never publish the classroom copies — they contain members' phone numbers,
+# email addresses, full home addresses and birthdates. Git history is permanent.
+Calderon.html
+Candaswa.html
+Carandag.html
+Ebdani.html
+Mararac.html
+Mateo.html
+Santos.html
+members.html
+group4.html
